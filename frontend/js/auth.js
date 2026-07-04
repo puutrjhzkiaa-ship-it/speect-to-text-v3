@@ -1,7 +1,7 @@
 // js/auth.js
 // Menangani register, login, Google Sign-In, logout, dan pemulihan sesi.
 
-const { apiFetch, getToken, setToken, getCachedUser, setCachedUser } = window.speechTexterApi;
+var { apiFetch, getToken, setToken, getCachedUser, setCachedUser } = window.speechTexterApi;
 
 let currentUser = getCachedUser();
 let googleEnabled = false;
