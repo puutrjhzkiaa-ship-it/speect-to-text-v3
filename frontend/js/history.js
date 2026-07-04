@@ -1,7 +1,7 @@
 // js/history.js
 // Fitur baru: Riwayat STT/TTS tersimpan di backend, per akun.
 
-const { apiFetch } = window.speechTexterApi;
+var { apiFetch } = window.speechTexterApi;
 
 let historyCache = [];
 let activeFilter = 'all';
