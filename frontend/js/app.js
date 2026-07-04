@@ -2,7 +2,7 @@
 // Navigasi halaman, fitur Speech-to-Text, Text-to-Speech, Bahasa Isyarat,
 // dark mode, dan sinkronisasi preferensi ke backend.
 
-const { apiFetch } = window.speechTexterApi;
+var { apiFetch } = window.speechTexterApi;
 
 // ======================
 // PAGE NAVIGATION
