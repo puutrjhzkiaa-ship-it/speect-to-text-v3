@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Texter - Suara Jadi Teks</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Sign-In (aktif otomatis jika server dikonfigurasi) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- LANDING PAGE -->
+    <div id="landing-page" class="page active">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <span class="logo-icon">🎤</span>
+                    <span class="logo-text">Speech Texter</span>
+                </div>
+                <div class="nav-buttons">
+                    <button class="theme-toggle-btn" id="theme-toggle-landing" title="Ganti tema">🌙</button>
+                    <button class="nav-btn nav-login" onclick="goToLogin()">Masuk</button>
+                    <button class="nav-btn nav-signup" onclick="goToRegister()">Daftar</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-background">
+                <div class="floating-shape shape1"></div>
+                <div class="floating-shape shape2"></div>
+                <div class="floating-shape shape3"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Ubah Suara Menjadi Teks,<br>
+                    <span class="gradient-text">Dengan Mudah & Cepat</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Teknologi AI terdepan untuk mengkonversi suara ke teks dan teks ke suara, kini dengan akun asli, riwayat tersimpan, dan sinkronisasi lintas perangkat.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-hero btn-primary" onclick="goToLogin()">
+                        Mulai Sekarang
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn btn-hero btn-secondary" onclick="document.querySelector('.demo-section').scrollIntoView({behavior:'smooth'})">
+                        Pelajari Lebih Lanjut
+                    </button>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-badge">✨ 20+ Bahasa Didukung</div>
+                    <div class="feature-badge">⚡ Real-time Processing</div>
+                    <div class="feature-badge">🔒 Akun & Data Aman</div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="mic-circle">
+                    <div class="mic-pulse"></div>
+                    🎤
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2>Fitur Unggulan Kami</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>Speech to Text</h3>
+                    <p>Konversi suara Anda menjadi teks dengan akurasi tinggi secara real-time</p>
+                    <ul class="feature-list">
+                        <li>✓ Pengenalan suara real-time</li>
+                        <li>✓ Akurasi tinggi</li>
+                        <li>✓ Dukungan multi-bahasa</li>
+                    </ul>
+                </div>
+                <div class="feature-card featured">
+                    <div class="feature-badge-top">Populer</div>
+                    <div class="feature-icon">📢</div>
+                    <h3>Text to Speech</h3>
+                    <p>Ubah teks Anda menjadi suara yang natural dan mulus dengan berbagai pilihan</p>
+                    <ul class="feature-list">
+                        <li>✓ Suara natural dan jernih</li>
+                        <li>✓ Kontrol kecepatan & nada</li>
+                        <li>✓ Dukungan multi-bahasa</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤟</div>
+                    <h3>Bahasa Isyarat</h3>
+                    <p>Visualisasi bahasa isyarat untuk komunikasi yang lebih inklusif</p>
+                    <ul class="feature-list">
+                        <li>✓ 4 bahasa isyarat (ASL, BSL, GSL, LSF)</li>
+                        <li>✓ Animasi huruf & kata umum</li>
+                        <li>✓ Panduan gerakan tangan</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Riwayat Tersimpan</h3>
+                    <p>Semua hasil STT & TTS otomatis tersimpan dan bisa diakses dari perangkat manapun</p>
+                    <ul class="feature-list">
+                        <li>✓ Sinkron ke akun Anda</li>
+                        <li>✓ Cari & hapus kapan saja</li>
+                        <li>✓ Ekspor ke .txt</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎛️</div>
+                    <h3>Preferensi Tersinkron</h3>
+                    <p>Pengaturan bahasa, kecepatan, nada, dan tema tersimpan otomatis ke akun Anda</p>
+                    <ul class="feature-list">
+                        <li>✓ Sync di semua device</li>
+                        <li>✓ Dark mode</li>
+                        <li>✓ Preferensi per pengguna</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Aman & Privat</h3>
+                    <p>Password terenkripsi, sesi berbasis token, dan data milik Anda sepenuhnya</p>
+                    <ul class="feature-list">
+                        <li>✓ Password ter-hash (bcrypt)</li>
+                        <li>✓ Sesi berbasis JWT</li>
+                        <li>✓ Login manual atau Google</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card"><h3>20+</h3><p>Bahasa STT/TTS</p></div>
+            <div class="stat-card"><h3>4</h3><p>Bahasa Isyarat</p></div>
+            <div class="stat-card"><h3>100%</h3><p>Riwayat Tersimpan</p></div>
+            <div class="stat-card"><h3>2</h3><p>Cara Login (Email/Google)</p></div>
+        </section>
+
+        <!-- Demo Section (tanpa login, tidak tersimpan ke riwayat) -->
+        <section class="demo-section">
+            <h2>Coba Sekarang - Demo Interaktif</h2>
+            <p class="demo-subtitle">Rasakan sendiri kemampuan Speech Texter tanpa perlu login</p>
+
+            <div class="demo-container">
+                <div class="demo-tab-buttons">
+                    <button class="demo-tab-btn active" data-demo="stt-demo">🎙️ Coba Speech to Text</button>
+                    <button class="demo-tab-btn" data-demo="tts-demo">📢 Coba Text to Speech</button>
+                </div>
+
+                <div id="stt-demo" class="demo-content active">
+                    <div class="demo-box">
+                        <h3>Speech to Text - Demo</h3>
+                        <p>Klik tombol di bawah dan berbicara untuk melihat bagaimana aplikasi mengubah suara menjadi teks secara real-time.</p>
+                        <div class="demo-language">
+                            <label for="demo-stt-lang">Pilih Bahasa:</label>
+                            <select id="demo-stt-lang">
+                                <option value="id-ID">Bahasa Indonesia</option>
+                                <option value="en-US">English (US)</option>
+                                <option value="es-ES">Español</option>
+                            </select>
+                        </div>
+                        <div class="demo-buttons">
+                            <button id="demo-start-btn" class="btn btn-demo-primary">🎤 Mulai Demo</button>
+                            <button id="demo-stop-btn" class="btn btn-demo-danger" disabled>⏹️ Berhenti</button>
+                            <button id="demo-clear-btn" class="btn btn-demo-secondary">🗑️ Hapus</button>
+                        </div>
+                        <div id="demo-status" class="demo-status"></div>
+                        <textarea id="demo-transcript" class="demo-textarea" placeholder="Hasil speech to text akan muncul di sini..." readonly></textarea>
+                    </div>
+                </div>
+
+                <div id="tts-demo" class="demo-content">
+                    <div class="demo-box">
+                        <h3>Text to Speech - Demo</h3>
+                        <p>Ketik atau paste teks di bawah ini dan dengarkan bagaimana aplikasi mengubahnya menjadi suara yang natural.</p>
+                        <div class="demo-language">
+                            <label for="demo-tts-lang">Pilih Bahasa:</label>
+                            <select id="demo-tts-lang">
+                                <option value="id-ID">Bahasa Indonesia</option>
+                                <option value="en-US">English (US)</option>
+                                <option value="es-ES">Español</option>
+                            </select>
+                        </div>
+                        <textarea id="demo-text-input" class="demo-textarea" placeholder="Ketik teks di sini...">Halo! Selamat datang di Speech Texter. Ini adalah demo fitur text to speech.</textarea>
+                        <div class="demo-buttons">
+                            <button id="demo-speak-btn" class="btn btn-demo-primary">📢 Dengarkan</button>
+                            <button id="demo-pause-btn" class="btn btn-demo-warning" disabled>⏸️ Jeda</button>
+                            <button id="demo-resume-btn" class="btn btn-demo-warning" disabled>▶️ Lanjut</button>
+                            <button id="demo-stop-tts-btn" class="btn btn-demo-danger" disabled>⏹️ Hentikan</button>
+                        </div>
+                        <div id="demo-tts-status" class="demo-status"></div>
+                    </div>
+                </div>
+
+                <div class="demo-cta">
+                    <p>Sudah mencoba demo? Sekarang saatnya untuk menggunakan fitur lengkapnya!</p>
+                    <button class="btn btn-cta" onclick="goToLogin()">Daftar & Gunakan Sekarang</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Speech Texter. Semua hak dilindungi. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
+    </div>
+
+    <!-- LOGIN PAGE -->
+    <div id="login-page" class="page">
+        <div class="auth-container">
+            <div class="auth-box">
+                <div class="auth-header">
+                    <button class="back-btn" onclick="goToLanding()">← Kembali</button>
+                    <h2>Masuk ke Akun</h2>
+                </div>
+                <div id="login-alert" class="auth-alert"></div>
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="name@example.com" required>
+                        <span class="input-icon">✉️</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Masukkan password" required>
+                        <span class="input-icon">🔐</span>
+                    </div>
+                    <button type="submit" class="btn btn-login" id="login-submit-btn">Masuk</button>
+                </form>
+                <div class="auth-divider">atau</div>
+                <div id="google-signin-button-login" class="google-signin-container"></div>
+                <p class="auth-footer">
+                    Belum punya akun? <a href="#" onclick="goToRegister(); return false;">Daftar di sini</a>
+                </p>
+            </div>
+            <div class="auth-side">
+                <div class="auth-side-content">
+                    <h3>Selamat Datang Kembali!</h3>
+                    <p>Masuk untuk mengakses semua fitur Speech Texter dan lanjutkan pekerjaan Anda</p>
+                    <div class="auth-side-features">
+                        <div>✨ Sinkronisasi lintas perangkat</div>
+                        <div>📊 Riwayat penggunaan</div>
+                        <div>🎯 Preferensi tersimpan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTER PAGE -->
+    <div id="register-page" class="page">
+        <div class="auth-container">
+            <div class="auth-box">
+                <div class="auth-header">
+                    <button class="back-btn" onclick="goToLanding()">← Kembali</button>
+                    <h2>Buat Akun Baru</h2>
+                </div>
+                <div id="register-alert" class="auth-alert"></div>
+                <form class="auth-form" id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Nama Lengkap</label>
+                        <input type="text" id="register-name" placeholder="Nama Anda" required>
+                        <span class="input-icon">👤</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" placeholder="name@example.com" required>
+                        <span class="input-icon">✉️</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" placeholder="Minimal 8 karakter" minlength="8" required>
+                        <span class="input-icon">🔐</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm">Konfirmasi Password</label>
+                        <input type="password" id="register-confirm" placeholder="Ulangi password" required>
+                        <span class="input-icon">🔐</span>
+                    </div>
+                    <div class="form-terms">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Saya setuju dengan <a href="#">Syarat & Ketentuan</a></label>
+                    </div>
+                    <button type="submit" class="btn btn-login" id="register-submit-btn">Buat Akun</button>
+                </form>
+                <div class="auth-divider">atau</div>
+                <div id="google-signin-button-register" class="google-signin-container"></div>
+                <p class="auth-footer">
+                    Sudah punya akun? <a href="#" onclick="goToLogin(); return false;">Masuk di sini</a>
+                </p>
+            </div>
+            <div class="auth-side">
+                <div class="auth-side-content">
+                    <h3>Bergabunglah dengan Kami!</h3>
+                    <p>Buat akun untuk mengakses semua fitur canggih Speech Texter</p>
+                    <div class="auth-side-features">
+                        <div>☁️ Riwayat tersimpan di cloud</div>
+                        <div>🔁 Sinkron lintas perangkat</div>
+                        <div>🎯 Preferensi personal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICATION PAGE -->
+    <div id="app-page" class="page">
+        <div class="app-navbar">
+            <div class="app-nav-left">
+                <span class="logo-icon">🎤</span>
+                <span class="logo-text">Speech Texter</span>
+            </div>
+            <div class="app-nav-center">
+                <button class="nav-tab-btn active" data-tab="speech-to-text">🎙️ Suara ke Teks</button>
+                <button class="nav-tab-btn" data-tab="text-to-speech">📢 Teks ke Suara</button>
+                <button class="nav-tab-btn" data-tab="sign-language">🤟 Bahasa Isyarat</button>
+                <button class="nav-tab-btn" data-tab="history-tab">📚 Riwayat</button>
+            </div>
+            <div class="app-nav-right">
+                <span class="sync-status" id="sync-status"><span class="dot"></span> Tersinkron</span>
+                <button class="theme-toggle-btn" id="theme-toggle-app" title="Ganti tema">🌙</button>
+                <button class="user-profile" id="user-profile-btn">👤 Hai, Pengguna</button>
+                <button class="logout-btn" onclick="handleLogout()">Keluar</button>
+            </div>
+        </div>
+
+        <section class="dashboard-hero">
+            <div class="dashboard-hero-copy">
+                <p class="eyebrow">Dashboard</p>
+                <h1 id="dashboard-greeting">Ubah Suara Menjadi Teks dengan Mudah & Akurat</h1>
+                <p>Semua fitur aktif: Speech-to-Text, Text-to-Speech, Bahasa Isyarat, dan Riwayat kini tersimpan di akun Anda.</p>
+                <div class="dashboard-hero-actions">
+                    <button class="btn btn-primary" onclick="document.querySelector('[data-tab=\"speech-to-text\"]').click()">Mulai Transkripsi Sekarang</button>
+                    <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=\"text-to-speech\"]').click()">Dengarkan Suara</button>
+                </div>
+                <div class="hero-badges">
+                    <span>✅ 20+ Bahasa</span>
+                    <span>✅ Real-time Konversi</span>
+                    <span>✅ Riwayat Tersinkron</span>
+                </div>
+            </div>
+            <div class="dashboard-hero-image">
+                <div class="dashboard-card-illustration">
+                    <div class="illustration-top"></div>
+                    <div class="illustration-bottom"></div>
+                    <div class="illustration-icon">🎙️</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="app-container">
+            <div class="app-header">
+                <h1>Dashboard Aplikasi</h1>
+                <p>Semua fitur tersedia di bawah ini. Pilih tab untuk langsung menggunakan modul yang diinginkan.</p>
+            </div>
+
+            <!-- Speech to Text Tab -->
+            <div id="speech-to-text" class="tab-content active">
+                <div class="section">
+                    <h2>Ubah Suara Menjadi Teks</h2>
+                    <div class="language-selector">
+                        <label for="stt-language">Pilih Bahasa:</label>
+                        <select id="stt-language">
+                            <option value="id-ID">🇮🇩 Bahasa Indonesia</option>
+                            <option value="en-US">🇺🇸 English (US)</option>
+                            <option value="en-GB">🇬🇧 English (UK)</option>
+                            <option value="es-ES">🇪🇸 Español</option>
+                            <option value="fr-FR">🇫🇷 Français</option>
+                            <option value="de-DE">🇩🇪 Deutsch</option>
+                            <option value="it-IT">🇮🇹 Italiano</option>
+                            <option value="pt-BR">🇧🇷 Português (Brasil)</option>
+                            <option value="pt-PT">🇵🇹 Português (Portugal)</option>
+                            <option value="ru-RU">🇷🇺 Русский</option>
+                            <option value="ja-JP">🇯🇵 日本語</option>
+                            <option value="zh-CN">🇨🇳 中文 (简体)</option>
+                            <option value="zh-TW">🇹🇼 中文 (繁体)</option>
+                            <option value="ko-KR">🇰🇷 한국어</option>
+                            <option value="ar-SA">🇸🇦 العربية</option>
+                            <option value="hi-IN">🇮🇳 हिन्दी</option>
+                            <option value="th-TH">🇹🇭 ไทย</option>
+                            <option value="vi-VN">🇻🇳 Tiếng Việt</option>
+                            <option value="tr-TR">🇹🇷 Türkçe</option>
+                            <option value="nl-NL">🇳🇱 Nederlands</option>
+                        </select>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="start-btn" class="btn btn-primary"><span class="btn-icon">🎤</span> Mulai Rekam</button>
+                        <button id="stop-btn" class="btn btn-danger" disabled><span class="btn-icon">⏹️</span> Berhenti</button>
+                        <button id="clear-stt-btn" class="btn btn-secondary"><span class="btn-icon">🗑️</span> Hapus</button>
+                    </div>
+
+                    <div id="status-message" class="status-message"></div>
+
+                    <div class="text-area-container">
+                        <textarea id="transcript" placeholder="Hasil teks akan muncul di sini..." readonly></textarea>
+                        <button id="copy-stt-btn" class="btn btn-small">📋 Salin</button>
+                        <button id="save-stt-btn" class="btn btn-small">💾 Simpan ke Riwayat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text to Speech Tab -->
+            <div id="text-to-speech" class="tab-content">
+                <div class="section">
+                    <h2>Ubah Teks Menjadi Suara</h2>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label for="tts-language">Pilih Bahasa:</label>
+                            <select id="tts-language">
+                                <option value="id-ID">🇮🇩 Bahasa Indonesia</option>
+                                <option value="en-US">🇺🇸 English (US)</option>
+                                <option value="en-GB">🇬🇧 English (UK)</option>
+                                <option value="es-ES">🇪🇸 Español</option>
+                                <option value="fr-FR">🇫🇷 Français</option>
+                                <option value="de-DE">🇩🇪 Deutsch</option>
+                                <option value="it-IT">🇮🇹 Italiano</option>
+                                <option value="pt-BR">🇧🇷 Português (Brasil)</option>
+                                <option value="pt-PT">🇵🇹 Português (Portugal)</option>
+                                <option value="ru-RU">🇷🇺 Русский</option>
+                                <option value="ja-JP">🇯🇵 日本語</option>
+                                <option value="zh-CN">🇨🇳 中文 (简体)</option>
+                                <option value="zh-TW">🇹🇼 中文 (繁体)</option>
+                                <option value="ko-KR">🇰🇷 한국어</option>
+                                <option value="ar-SA">🇸🇦 العربية</option>
+                                <option value="hi-IN">🇮🇳 हिन्दी</option>
+                                <option value="th-TH">🇹🇭 ไทย</option>
+                                <option value="vi-VN">🇻🇳 Tiếng Việt</option>
+                                <option value="tr-TR">🇹🇷 Türkçe</option>
+                                <option value="nl-NL">🇳🇱 Nederlands</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="speech-rate">Kecepatan: <span id="rate-display">1.0x</span></label>
+                            <input type="range" id="speech-rate" min="0.5" max="2" step="0.1" value="1">
+                        </div>
+                        <div class="control-group">
+                            <label for="speech-pitch">Nada Suara: <span id="pitch-display">1.0</span></label>
+                            <input type="range" id="speech-pitch" min="0.5" max="2" step="0.1" value="1">
+                        </div>
+                        <div class="control-group">
+                            <label for="speech-volume">Volume: <span id="volume-display">100%</span></label>
+                            <input type="range" id="speech-volume" min="0" max="1" step="0.1" value="1">
+                        </div>
+                    </div>
+
+                    <div class="text-area-container">
+                        <textarea id="text-input" placeholder="Ketik teks yang ingin diucapkan di sini..."></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="speak-btn" class="btn btn-primary"><span class="btn-icon">📢</span> Mulai Ucapkan</button>
+                        <button id="pause-btn" class="btn btn-warning" disabled><span class="btn-icon">⏸️</span> Jeda</button>
+                        <button id="resume-btn" class="btn btn-warning" disabled><span class="btn-icon">▶️</span> Lanjut</button>
+                        <button id="stop-tts-btn" class="btn btn-danger" disabled><span class="btn-icon">⏹️</span> Hentikan</button>
+                    </div>
+
+                    <div id="character-count" class="character-count">Karakter: <span id="char-number">0</span>/5000</div>
+                </div>
+            </div>
+
+            <!-- Sign Language Tab -->
+            <div id="sign-language" class="tab-content">
+                <div class="section">
+                    <h2>🤟 Bahasa Isyarat Animasi</h2>
+                    <p class="sign-language-desc">Visualisasi bahasa isyarat untuk mempermudah komunikasi dengan tuli/kurang dengar</p>
+
+                    <div class="language-selector">
+                        <label for="sign-lang">Pilih Bahasa:</label>
+                        <select id="sign-lang">
+                            <option value="asl">🇺🇸 American Sign Language (ASL)</option>
+                            <option value="bsl">🇬🇧 British Sign Language (BSL)</option>
+                            <option value="gsl">🇩🇪 German Sign Language (GSL)</option>
+                            <option value="fsl">🇫🇷 French Sign Language (LSF)</option>
+                        </select>
+                    </div>
+
+                    <div class="sign-language-container">
+                        <div class="sign-input-group">
+                            <label>Masukkan teks atau gunakan Speech to Text</label>
+                            <textarea id="sign-text-input" placeholder="Ketik teks untuk diterjemahkan ke bahasa isyarat..." maxlength="100"></textarea>
+                        </div>
+
+                        <div class="sign-animation-area">
+                            <div class="sign-character">🤟</div>
+                            <div class="sign-display" id="sign-display">
+                                <div class="sign-frame" id="sign-frame"></div>
+                            </div>
+                            <div class="sign-info" id="sign-info">Masukkan teks untuk melihat animasi</div>
+                        </div>
+
+                        <div class="sign-buttons">
+                            <button class="btn btn-primary" onclick="startSignAnimation()">▶️ Tampilkan Isyarat</button>
+                            <button class="btn btn-secondary" onclick="resetSignAnimation()">🔄 Reset</button>
+                        </div>
+
+                        <div class="sign-guide">
+                            <h3>Panduan Gerakan Tangan:</h3>
+                            <div class="guide-grid">
+                                <div class="guide-item"><div class="guide-emoji">👋</div><div class="guide-text">Wave (Mahir/Tahu)</div></div>
+                                <div class="guide-item"><div class="guide-emoji">🤝</div><div class="guide-text">Shake (Setuju/Ya)</div></div>
+                                <div class="guide-item"><div class="guide-emoji">🙏</div><div class="guide-text">Pray (Terima Kasih)</div></div>
+                                <div class="guide-item"><div class="guide-emoji">👉</div><div class="guide-text">Point (Tunjuk)</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab (NEW) -->
+            <div id="history-tab" class="tab-content">
+                <div class="section">
+                    <h2>📚 Riwayat Anda</h2>
+                    <p>Semua hasil Speech-to-Text dan Text-to-Speech yang Anda simpan akan muncul di sini, tersinkron ke akun Anda.</p>
+
+                    <div class="history-toolbar">
+                        <button class="history-filter-btn active" data-filter="all">Semua</button>
+                        <button class="history-filter-btn" data-filter="stt">🎙️ Speech to Text</button>
+                        <button class="history-filter-btn" data-filter="tts">📢 Text to Speech</button>
+                        <button class="btn btn-small" id="refresh-history-btn">🔄 Muat Ulang</button>
+                        <button class="btn btn-small" id="export-history-btn">⬇️ Ekspor .txt</button>
+                        <button class="btn btn-small btn-danger" id="clear-history-btn">🗑️ Hapus Semua</button>
+                    </div>
+
+                    <div id="history-list" class="history-list">
+                        <div class="history-empty">Memuat riwayat...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Backend berada di origin yang sama (server Express serve frontend + API)
+        window.BACKEND_URL = '';
+    </script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html>

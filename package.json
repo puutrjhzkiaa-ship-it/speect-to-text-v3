@@ -1,0 +1,11 @@
+{
+  "name": "speech-texter",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Speech Texter — frontend + backend terpisah, dijalankan dari satu server Express",
+  "scripts": {
+    "install:backend": "cd backend && npm install",
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev"
+  }
+}
